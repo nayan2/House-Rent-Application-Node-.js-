@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>House Rent</title>
+		<style type="text/css">
+			body{
+				font-family: Arial;
+			}
+		</style>
+	</head>
+	<body>
+
+		<center>
+			<h1>Admin Panel</h1> </br><label style="color:red"> <%=message%> </label><hr> 
+
+			
+			
+			<label ><a href="/home">Home</a></label> |
+			<label ><a href="adminPanel/report">Report</a></label> |
+			 <label ><a href="#ApprovedPost">Approved Post</a></label> |
+			 <label ><a href="#pendingPost">Pending Post</a></label> |
+			 <label ><a href="#Area">Area</a></label> |
+			 <label ><a href="#Admin">Admin</a></label>
+			 
+			
+			
+			<hr>
+		     <h3 id="ApprovedPost">Approved Post</h3>
+		     <hr>
+			<table cellpadding="15" cellspacing="20" border="1" rules="all" >
+			<% for(var i=0; i < post.length; i++){ %>
+			
+							<tr>
+
+			          <td>
+			          <a href="/postdetail/<%=post[i].PostId%>"><img src="<%=post[i].Image%>" width="100" height="100"></a>
+			          </td>
+
+			          <td>
+			          <b>Name:<a href="/postdetail/<%=post[i].PostId%>"><%=post[i].HouseName%></a></b></br>
+			          Area:<%=post[i].AreaName%>
+					</td>
+
+				<td>
+				<a href="/adminPanel/deletePost/<%=post[i].PostId%>"><input type="Button" value="Delete"></a>
+				</td>
+					
+				</tr>
+
+			<% } %>
+
+			</table>
+			<hr>
+
+			<h3 id="pendingPost">Pending Post</h3>
+			<hr>
+			<table cellpadding="15" cellspacing="20" border="1" rules="all" >
+			<% for(var i=0; i < posti.length; i++){ %>
+			
+							<tr>
+
+			          <td>
+			          <a href="/postdetail/<%=posti[i].PostId%>"><img src="<%=posti[i].Image%>" width="100" height="100"></a>
+			          </td>
+
+			          <td>
+			          <b>Name:<a href="/postdetail/<%=posti[i].PostId%>"><%=posti[i].HouseName%></a></b></br>
+			          Area:<%=posti[i].AreaName%>
+					</td>
+
+				<td>
+				<a href="/adminPanel/deletePost/<%=posti[i].PostId%>"><input type="Button" value="Delete"></a>
+				<a href="/adminPanel/approve/<%=posti[i].PostId%>"><input type="Button" value="approve"></a>
+				</td>
+					
+				</tr>
+
+			<% } %>
+			</table>
+
+	
+			</table>
+			<hr>
+			<h3 id="Area">Area</h3>
+			<hr>
+			<table cellpadding="15" cellspacing="20" border="1" rules="all" >
+
+			<thead>
+					<td>Name</td>
+					<td>Action</td>
+				</thead>
+			<% for(var i=0; i < area.length; i++){ %>
+			
+				<tr>
+					
+					<td><%=area[i].AreaName%></td>
+					<td>
+				<a href="adminpanel/deleteArea/<%=area[i].AreaName%>"><input type="Button" value="Delete"></a>
+				</td>
+				</tr>
+				
+
+			<% } %>
+			</table>
+			
+
+		
+			</table>
+			<hr>
+			<h3 id="Admin">Admin</h3>
+			<hr>
+			<table cellpadding="15" cellspacing="20" border="1" rules="all" >
+			<thead>
+					<td>Full Name</td>
+					<td>User Name</td>
+					<td>Phone Number</td>
+				</thead>
+			<% for(var i=0; i < admin.length; i++){ %>
+			
+				<tr>
+
+					<td><%=admin[i].FullName%></td>
+					<td><%=admin[i].UserName%></td>
+					<td><%=admin[i].PhoneNo%></td>
+					
+				</tr>
+
+			<% } %>
+			</table>
+			
+			
+
+		</center>
+	</body>
+
+</html>
